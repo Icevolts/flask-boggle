@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Boggle</title>
+</head>
+<body>
+    <section id="boggle">
+        <h1>Welcome to Boggle</h1>
+        <table class="board">
+            <tbody>
+                {% for row in board %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{cell}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form method="POST" class="add-word">
+            <input type="text" name="word" class="word">
+            <button>Submit Word</button>
+        </form>
+
+        <p>
+            Highscore --- <i>{{highscore}}</i><br>
+            Number of times played --- <i>{{num_plays}}</i>
+        </p>
+
+        <!-- Space for score and timer of current game -->
+        <p>
+            Current Game: <br>
+            Score --- <i class="score">0</i>
+            Countdown --- <i class="timer"></i>
+        </p>
+
+        <!-- This is where the message will be displayed for the word just entered -->
+        <p class="msg">
+            
+        </p>
+
+        <!-- This is where we will append all the words found -->
+        <ul class="words">
+
+        </ul>
+
+    </section>
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="/static/boggle.js"></script>
+    <script>
+        let game = new BoggleGame('boggle', 60)
+    </script>
+</body>
+</html>
